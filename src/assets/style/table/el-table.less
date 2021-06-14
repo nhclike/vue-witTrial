@@ -1,0 +1,334 @@
+/* 列表页样式 非全局引入 按需引入
+ * @Author: ShiHuiJun 
+ * @Date: 2020-03-12 10:29:14 
+ * @Last Modified by: ShiHuiJun
+ * @Last Modified time: 2020-12-01 17:12:43
+ */
+
+@import './../variables.less';
+@import './../table/shj-el-table.less'; // 引入less定义变量
+// @import './../table/sign-el-table.less'; // 引入less定义变量
+
+// !!!element-ui中的样式由于是外部引入组件样式,所以不需要加/deep/,如在组件内部使用如.el-table,请在前jia/deep/,即/deep/.el-table
+
+@table_title_height: 60px; //表格-头部标题栏
+@base_color_blue: #1677ff;
+//签名页面表格样式
+@sign_table_bg:transparent;
+// @sign_table_bg: transparent;
+
+// 父组件页面 顶层class
+.listPage {
+  box-shadow: 0 0 20px 1px @box_shadow;
+  height: 100%;
+  background: #fff;
+  overflow: auto;
+}
+// 子组件页面 顶层class
+.shjListPage {
+  height: 100%;
+  position: relative;
+  padding: 0 30px;
+
+  // 列表页-只有列表
+  &.total {
+    height: calc(100% - 30px);
+  }
+
+  &.ptb40 {
+    padding: 40px 0;
+  }
+  .tablePagination {
+    right: 20px;
+    left: 20px;
+  }
+}
+.list-top{
+  padding-bottom: 10px;
+}
+// 子组件页面 标题区
+.table-top {
+  height: @table_title_height;
+  line-height: @table_title_height;
+  position: relative;
+  font-size: @font28px;
+  border-bottom: @border_small solid @border_color_divider;
+
+  // 标题flag
+  .flag {
+    width: 5px;
+    height: @font28px;
+    line-height: @font28px;
+    display: inline-block;
+    background: @base_color_blue;
+    margin-right: 10px;
+    // vertical-align: middle;
+  }
+
+  // 标题
+  .title {
+    // font-weight: bold;
+  }
+
+  i{
+    cursor: pointer;
+  }
+}
+// 子组件页面 查询区 使用通用表单样式form.less 中 form-body inquire
+
+// 子组件页面 操作区
+.opt-box{
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: @font28px;
+  line-height: 65px;
+  height: 65px;
+  button{
+    &:not(:first-child){
+      margin-left: 25px;
+    }
+    i,span{
+      vertical-align: middle;
+    }
+  }
+}
+
+
+//签名页面表格样式
+.signTable{
+  /* el-table-theme 参数说明
+    * @color 表格文字颜色
+    * @color_thead 表头文字颜色
+    * @bg_thead 表头背景颜色
+    * @bg_td_striped 单元格斑马纹颜色
+    * @border_bottom 底部分割线大小
+    * @border_color_divider 单元格底部线颜色
+    * @@bg_tbody  tbody背景色
+    */
+  .el-table-theme(
+    @text_color_white,
+    @text_color_white,
+    @sign_table_bg,
+    @sign_table_bg,
+    0px,
+    @sign_table_bg,
+    @sign_table_bg
+  );
+  .el-table-size(@font28px, 80px, 80px);
+  /deep/.el-table{
+    background: transparent;
+    color:@text_color_area;
+    font-size: @font28px;
+    .el-table th, .el-table tr{
+      background: transparent;
+      
+    }
+    .el-table thead{
+      background: transparent;
+      color:@text_color_area;
+      font-size: @font28px;
+      tr{
+        th{
+          border: none;
+        }
+      }
+    }
+  }
+  /deep/.el-table, .el-table__expanded-cell{
+    background: transparent;
+  }
+  .signRow{
+    background: transparent !important;
+    
+  }
+}
+// 子组件页面 表格区
+.tableContent {
+  overflow-y: auto;
+  border: 1px solid #d3d3d3;
+  border-radius: 5px;
+  /* el-table-theme 参数说明
+    * @color 表格文字颜色
+    * @color_thead 表头文字颜色
+    * @bg_thead 表头背景颜色
+    * @bg_td_striped 单元格斑马纹颜色
+    * @border_bottom 底部分割线大小
+    * @border_color_divider 单元格底部线颜色
+    */
+  .el-table-theme(
+    @text_color_black_75,
+    @text_color_white,
+    @base_color_blue,
+    #f6f6f6,
+    1px,
+    @border_color_divider
+  );
+  .el-table-size(@font28px, 80px, 80px);
+  .shj-el-table--small {
+    .el-table-size(@font20px, 50px, 50px);
+  }
+  .el-table__expand-icon {
+    font-size: @font18px;
+  }
+}
+// 当前激活单元格
+.activeCell {
+  .cell {
+    color: @color_primary;
+    // text-decoration: underline;
+    cursor: pointer;
+  }
+}
+// 列[操作按钮]-默认
+.listButton {
+  display: inline-block;
+  color: @color_primary_workBench;
+  padding: 0 10px;
+  // line-height: 18px;
+  // background: #fff;
+  font-size: @font28px;
+  cursor: pointer;
+
+  /* &:not(:last-child) {
+    border-right: 1px solid RGB(204, 204, 204);
+  }
+ */
+  // 列[操作按钮]-紧要
+  &.error {
+    color: @color_danger;
+  }
+}
+// 列[图片]-图片-默认
+.list-img {
+  width: 100%;
+  height: 65px;
+  overflow: hidden;
+  cursor: pointer;
+  position: relative;
+
+  img {
+    width: 100%;
+    // height: 100%;
+    position: absolute;
+    left: 0;
+    top: 50%;
+    transform: translate(0, -50%);
+  }
+}
+// 列[点击查看]-默认
+.list-view {
+  cursor: pointer;
+
+  img {
+    height: 100%;
+  }
+
+  &:hover {
+    color: @color_primary;
+    text-decoration: underline;
+  }
+}
+// 表格-分页
+.tablePagination {
+  z-index: 1998;
+  background: #fff;
+  position: absolute;
+  right: 0px;
+  left: 0px;
+  bottom: 0px;
+  padding: 20px;
+  .el-pagination {
+    font-weight: 500;
+
+    span:not([class*='suffix']) {
+      height: 40px;
+      line-height: 40px;
+      font-size: @font28px;
+      color: @text_color_black_8;
+      min-width: 0;
+      vertical-align: middle;
+    }
+
+    .el-pagination__total {
+      color: @text_color_black_8;
+    }
+
+    .el-pagination__sizes {
+      .el-select {
+        .el-input {
+          .el-input__inner {
+            border-radius: @border_radius_middle;
+            color: @text_color_black_8;
+            font-size: @font28px;
+            width: 150px;
+          }
+
+          .el-select__caret {
+            color: @text_color_black_8;
+            font-size: @font28px;
+          }
+        }
+      }
+    }
+
+    .el-pagination__jump {
+      margin-left: 25px;
+      height: @form_item_h;
+      line-height: @form_item_h;
+
+      .el-input {
+        width: 60px;
+
+        .el-input__inner {
+          border-radius: @border_radius_middle;
+          border: @border_small solid @border_color;
+          height: @form_item_h;
+          line-height: @form_item_h;
+          color: @text_color_black_8;
+          font-size: @font28px;
+          width: 50px;
+          padding: 0 10px;
+        }
+      }
+
+      .el-pagination__editor {
+        height: @form_item_h;
+        line-height: @form_item_h;
+        padding: 0 2px;
+        margin: 0 2px;
+        border-radius: @border_radius_middle;
+      }
+    }
+
+    button {
+      .el-icon {
+        font-size: @font28px;
+      }
+    }
+
+    .el-pager {
+      li {
+        padding: 0;
+        font-size: @font28px;
+      }
+    }
+  }
+
+  .el-pagination.is-background {
+    .el-pager li,
+    .btn-prev,
+    .btn-next {
+      font-size: @font28px;
+      background-color: #fff;
+      margin: 0 1px;
+      border-radius: 0;
+      color: @text_color_black_8;
+      width: @form_item_h;
+      min-width: 0;
+      height: @form_item_h;
+      line-height: @form_item_h;
+      border: @border_small solid @border_color;
+    }
+  }
+}

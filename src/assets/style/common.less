@@ -1,0 +1,413 @@
+/* 公用样式总入口 */
+@import 'normalize_v8.0.1.css'; // 引入处理兼容性的公共样式
+@import 'variables.less'; // 引入less定义变量
+@import './element-reset.less';
+@import './form/form.less';
+@import './theme.less';
+// @import "./table/el-table.less";
+// @import "./table/el-table.less";
+
+* {
+  box-sizing: border-box;
+}
+
+/* 一般公共样式书写 */
+// 2560*1080 比例
+@media (min-width: 2560px) {
+  html {
+    font-size: 100px;
+  }
+}
+html,
+body {
+  width: 100%;
+  height: 100%;
+  padding: 0;
+  margin: 0;
+  background-color: #fff;
+  overflow-y: hidden;
+}
+
+ul,
+li {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+textarea {
+  border: 0;
+  outline: none;
+}
+
+button {
+  outline: none;
+  cursor: pointer;
+}
+
+i {
+  font-style: normal;
+}
+
+a,
+a:active,
+a:focus,
+a:hover,
+a:visited {
+  // color: #333;
+  text-decoration: none;
+  outline: none;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+// 移动端项目需要设置
+/* body{
+    font-size: 12px;
+} */
+.full-width {
+  width: 100%;
+}
+
+.full-height {
+  height: 100%;
+}
+
+.hidden {
+  overflow: hidden;
+}
+
+.fl {
+  float: left;
+}
+
+.fr {
+  float: right;
+}
+
+/*文字溢出...*/
+.txt-ellipsis {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.txt-center {
+  text-align: center;
+}
+
+.txt-left {
+  text-align: left;
+}
+
+.txt-right {
+  text-align: right;
+}
+
+.pos-r {
+  position: relative;
+}
+
+.pos-a {
+  position: absolute;
+}
+
+.pos-f {
+  position: fixed;
+}
+.margin-left20 {
+  margin-left: 20px;
+}
+.margin-right20 {
+  margin-right: 20px;
+}
+.clearfix:after {
+  content: '';
+  display: table;
+  clear: both;
+}
+
+/* 系统公共样式书写 */
+.content-page {
+  box-shadow: 0 0 20px 1px @box_shadow;
+  height: 100%;
+  background: #fff;
+  overflow: auto;
+  position: relative;
+}
+
+.page-box {
+  display: flex;
+  flex-direction: column;
+  .page-top {
+    border-bottom: 1px solid @text_color_white_4;
+    line-height: 60px;
+    padding: 0 40px;
+    color: @text_color_black;
+    .page-title {
+      font-size: @font28px;
+    }
+  }
+  .page-content {
+    flex: 1;
+    overflow-y: auto;
+  }
+  .page-footer {
+    height: 40px;
+    display: flex;
+    justify-content: space-around;
+    .selectBox {
+      width: 200px;
+    }
+  }
+}
+
+// 按钮组
+.btn-box {
+  display: inline-block;
+  button,
+  span {
+    cursor: pointer;
+    &:not(:first-child) {
+      margin-left: 50px;
+    }
+    &:hover{
+      opacity: 0.8;
+    }
+  }
+}
+
+/* 字体图标 */
+.i-box {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  color: #fff;
+  font-size: @font24px;
+  padding-left: 40px;
+  &:not(:first-child) {
+    margin-left: 20px;
+  }
+  i {
+    position: absolute;
+    display: inline-block;
+    font-size: 35px;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+  }
+}
+
+.icon-box {
+  cursor: pointer;
+  position: relative;
+  display: inline-block;
+  padding-left: 30px;
+  width: 100%;
+  i {
+    position: absolute;
+    display: inline-block;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    background-size: 100% 100%;
+  }
+}
+
+.vertical-middle-left {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  transform: translateY(-50%);
+}
+
+.vertical-middle-right {
+  position: absolute;
+  top: 50%;
+  right: 0;
+  transform: translateY(-50%);
+}
+
+.horizontal-center {
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.vertical-horizontal-center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.text-center {
+  text-align: center;
+}
+
+/* 视频播放 */
+.video-player {
+  .video-js {
+    font-size: 20px;
+    width: 1024px;
+    height: 576px;
+  }
+  &.vjs-custom-skin > .video-js .vjs-big-play-button {
+    font-size: 3em;
+  }
+}
+
+/* 自定义图标 */
+.i-btn {
+  cursor: pointer;
+  font-size: @font34px;
+  padding: 0 2px;
+}
+
+.i-icon(@width:36px,@height:36px) {
+  background-size: @width @height;
+  display: inline-block;
+  width: @width !important;
+  height: @height !important;
+  margin-right: 10px;
+  vertical-align: middle;
+  cursor: pointer;
+}
+
+.i-icon {
+  .i-icon();
+}
+
+.i-workBench {
+  background: url('@{base_url}/icon/icon_workBench.png') no-repeat center center;
+  .i-icon(44px, 44px);
+}
+.i-trialLiving {
+  background: url('@{base_url}/openCourt/icon_tiralLive.png') no-repeat center center;
+  .i-icon(44px, 44px);
+}
+.i-exit {
+  background: url('@{base_url}/icon/icon_exit.png') no-repeat center center;
+  .i-icon(44px, 44px);
+}
+.i-user {
+  background: url('@{base_url}/icon/icon_user.png') no-repeat center center;
+  .i-icon(42px, 42px);
+}
+.i-lock {
+  background: url('@{base_url}/icon/icon_password.png') no-repeat center center;
+  .i-icon(42px, 42px);
+}
+.i-play {
+  background: url('@{base_url}/icon/icon_play.png') no-repeat center center;
+  .i-icon(38px, 38px);
+}
+.i-pause {
+  background: url('@{base_url}/icon/icon_pause.png') no-repeat center center;
+  .i-icon(38px, 38px);
+}
+.i-idCard {
+  background: url('@{base_url}/icon/icon_idCard.png') no-repeat center center;
+  .i-icon(40px, 40px);
+}
+.i-randomNum {
+  background: url('@{base_url}/icon/icon_randomNum.png') no-repeat center center;
+  .i-icon(40px, 40px);
+}
+.i-goBack--blue {
+  background: url('@{base_url}/icon/icon_goBack_blue.png') no-repeat center center;
+  .i-icon(40px, 40px);
+}
+.i-goBack--white {
+  background: url('@{base_url}/icon/icon_goBack_white.png') no-repeat center center;
+  .i-icon(40px, 40px);
+}
+.i-combinedCase {
+  background: url('@{base_url}/workBench/combinedCase.png') no-repeat center
+    center;
+  .i-icon(30px, 30px);
+}
+.i-addCourt {
+  background: url('@{base_url}/workBench/addCourt.png') no-repeat center center;
+  .i-icon(30px, 30px);
+}
+.i-manualScheduling {
+  background: url('@{base_url}/workBench/manualScheduling.png') no-repeat center
+    center;
+  .i-icon(30px, 30px);
+}
+.i-courtroom {
+  background: url('@{base_url}/icon/icon-court.png') no-repeat center center;
+  .i-icon(30px, 30px);
+  vertical-align: text-bottom;
+}
+// 示证设备
+.i-inputDev {
+  background: url('@{base_url}/icon/icon_inputDev.png') no-repeat center center;
+  .i-icon(34px, 34px);
+}
+// 显示设备
+.i-outputDev {
+  background: url('@{base_url}/icon/icon_outputDev.png') no-repeat center center;
+  .i-icon(34px, 34px);
+}
+/* 背景色 */
+.bg-color-primary {
+  background: @color_primary;
+}
+
+.bg-color-error {
+  background: @color_danger;
+}
+
+.bg-color-cancel {
+  background: @color_info;
+}
+
+.bg-color-black {
+  background: @color_black;
+}
+
+/* 字体颜色 */
+.font-color-primary {
+  color: @color_primary;
+}
+
+.font-color-error {
+  color: @color_danger;
+}
+
+.font-color-cancel {
+  color: @color_info;
+}
+
+.font-color-success {
+  color: @color_success;
+}
+
+.font_color {
+  color: @text_color_black;
+}
+
+//错误页面
+.errorPage {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  background: @color_primary_light;
+  .msgIcon {
+      width: 400px;
+      height: 308px;
+  }
+  .msg {
+      font-size: 48px;
+      color: @text_color_black_75;
+  }
+}

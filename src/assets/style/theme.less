@@ -1,0 +1,139 @@
+@charset "utf-8";
+@import './variables.less'; // 引入less定义变量
+/* -------------------- 布局-开始 -------------------- */
+// 页面主体
+.main {
+  width: 100%;
+  height: 100%;
+}
+// 盒容器 控制整体布局宽度
+.wrap {
+  width: 1200px;
+  margin: 0 auto;
+}
+// 容器
+.container {
+  width: 100%;
+}
+// 列表
+.list {
+  width: 100%;
+}
+// 内容
+.content {
+  width: 100%;
+}
+/* -------------------- 布局-结束 -------------------- */
+
+/* -------------------- 盒子-开始 -------------------- */
+.box(@border_size:0,@border_color:@bg_box,@bg_color: @bg_box,@ptb:0,@plr:0) {
+  border: @border_size solid @border_color;
+  border-radius: 5px;
+  background: @bg_color;
+  padding: @ptb @plr;
+}
+// 盒子
+.box {
+  .box();
+}
+.area {
+  .box(@border_radius_middle,@bg_area,20px,20px);
+}
+/* -------------------- 盒子-结束 -------------------- */
+
+/* -------------------- 按钮-开始 -------------------- */
+@border_btn: 2px;
+.btn(@color:@color_primary,@border_color:@color_primary,@bg_color: transparent) {
+  color: @color;
+  border: @border_btn solid @border_color;
+  border-radius: 5px;
+  background: @bg_color;
+  cursor: pointer;
+  display: inline-block;
+}
+.btn-size(@font-size:24px,@ptb:10px,@plr:20px) {
+  font-size: @font-size;
+  font-weight: 500;
+  line-height: 1;
+  padding: @ptb @plr;
+}
+.shj-btn {
+  .btn;
+  .btn-size;
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+  margin: 0;
+  outline: none;
+  box-sizing: border-box;
+  white-space: nowrap;
+  -webkit-appearance: none; /* 去除系统默认appearance的样式 */
+  -moz-user-select: none; /* 文本不能被选择 */
+  -webkit-user-select: none; /* 文本不能被选择 */
+  -ms-user-select: none; /* 文本不能被选择 */
+}
+/* btn 参数说明
+* @color 按钮文字颜色
+* @border_color 按钮边框颜色
+* @bg_color 按钮背景颜色
+*/
+//  如弹窗确定按钮
+.shj-btn--primary {
+  .btn(@text_color_white,@color_primary,@color_primary);
+}
+.shj-btn--primary1 {
+  .btn(@text_color_white,@color_primary1,@color_primary1);
+}
+.shj-btn--success {
+  .btn(@text_color_white,@color_success,@color_success);
+}
+.shj-btn--info {
+  .btn(@text_color_white,@color_info,@color_info);
+}
+.shj-btn--warning {
+  .btn(@text_color_white,@color_warning,@color_warning);
+}
+.shj-btn--danger {
+  .btn(@text_color_white,@color_danger,@color_danger);
+}
+// 如弹窗确认按钮
+.shj-btn--confirm {
+  .btn(@text_color_white,@color_primary1,@color_primary1);
+}
+// 如弹窗取消按钮
+.shj-btn--primary_light {
+  .btn(@color_primary,@color_primary_light,@color_primary_light);
+}
+// 如主页面color_primary_light背景下浅色按钮
+.shj-btn--primary_light1 {
+  .btn(@color_primary,@color_primary,@color_primary_light1);
+}
+// 如工作台列表页面控制栏按钮
+.shj-btn--primary_workBench {
+  .btn(@color_primary_workBench,@color_primary_workBench,@text_color_white);
+}
+// 如禁用按钮
+.shj-btn--disabled {
+  .btn(@text_color_black_25,@text_color_black_25,#eee);
+}
+/* btn-size 参数说明
+* @font-size 按钮文字大小
+* @ptb 按钮上下内边距
+* @plr 按钮左右内边距
+*/
+.shj-btn--large {
+  .btn-size(32px,22px,44px);
+}
+.shj-btn--medium {
+  .btn-size(28px,18px,36px);
+}
+.shj-btn--small {
+  .btn-size(24px,14px,28px);
+}
+.shj-btn--mini {
+  .btn-size(20px,10px,20px);
+}
+.shj-btn--medium_workBench {
+  .btn-size(28px,8px,10px);
+}
+/* -------------------- 按钮-结束 -------------------- */
